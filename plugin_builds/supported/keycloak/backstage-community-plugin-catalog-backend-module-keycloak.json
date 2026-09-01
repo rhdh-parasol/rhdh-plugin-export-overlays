@@ -1,0 +1,7 @@
+{
+  "backstage-community-plugin-catalog-backend-module-keycloak": {
+    "workspacePath": "keycloak/plugins/catalog-backend-module-keycloak",
+    "support": "generally-available",
+    "registryReference": "ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-catalog-backend-module-keycloak:bs_1.49.3__3.19.2"
+  }
+}

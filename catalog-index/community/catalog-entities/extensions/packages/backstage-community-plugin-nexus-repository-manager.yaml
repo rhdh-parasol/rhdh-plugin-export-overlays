@@ -1,0 +1,44 @@
+apiVersion: extensions.backstage.io/v1alpha1
+kind: Package
+metadata:
+  name: backstage-community-plugin-nexus-repository-manager
+  namespace: rhdh
+  title: "Nexus Repository Manager"
+  links:
+    - url: https://red.ht/rhdh
+      title: Homepage
+    - url: https://github.com/backstage/community-plugins/issues
+      title: Bugs
+    - title: Source Code
+      url: https://github.com/backstage/community-plugins/tree/main/workspaces/nexus-repository-manager
+  annotations:
+    backstage.io/source-location: url:https://github.com/backstage/community-plugins/tree/main/workspaces/nexus-repository-manager
+  tags: []
+spec:
+  packageName: "@backstage-community/plugin-nexus-repository-manager"
+  # Tag: bs_1.52.0__1.26.0
+  dynamicArtifact: "oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-nexus-repository-manager@sha256:0f0d6517c0df115e3e753d838480bb80123d2c39b03bede5ffe4e89d1f3770dd"
+  version: 1.26.0
+  backstage:
+    role: frontend-plugin
+    supportedVersions: 1.52.0
+  author: Red Hat
+  support: community
+  lifecycle: active
+  partOf:
+    - nexus-repository-manager
+  appConfigExamples:
+    - title: Default configuration
+      content:
+        dynamicPlugins:
+          frontend:
+            backstage-community.plugin-nexus-repository-manager:
+              mountPoints:
+                - mountPoint: entity.page.image-registry/cards
+                  importName: NexusRepositoryManagerPage
+                  config:
+                    layout:
+                      gridColumn: 1 / -1
+                    if:
+                      anyOf:
+                        - isNexusRepositoryManagerAvailable

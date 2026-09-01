@@ -1,0 +1,7 @@
+{
+  "backstage-community-plugin-argocd-backend": {
+    "workspacePath": "argocd/plugins/argocd-backend",
+    "support": "community",
+    "registryReference": "ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-argocd-backend:bs_1.49.2__1.4.0"
+  }
+}
