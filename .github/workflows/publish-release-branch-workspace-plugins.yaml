@@ -36,37 +36,7 @@ jobs:
         id: list
         env:
           WORKSPACE_PATH: ${{ inputs.workspace-path }}
-        run: |
-          python3 <<'PY'
-          import json
-          import os
-          import sys
-          from pathlib import Path
-
-          explicit = os.environ.get("WORKSPACE_PATH", "").strip()
-          if explicit:
-              workspaces = [explicit]
-          else:
-              workspaces = []
-              path = Path("parasol-publish-workspaces.txt")
-              if path.is_file():
-                  for raw in path.read_text(encoding="utf-8").splitlines():
-                      line = raw.split("#", 1)[0].strip()
-                      if not line:
-                          continue
-                      if not line.startswith("workspaces/"):
-                          line = f"workspaces/{line}"
-                      workspaces.append(line)
-              else:
-                  print(
-                      "::warning::parasol-publish-workspaces.txt is missing; publishing nothing",
-                      file=sys.stderr,
-                  )
-
-          print(f"Workspaces to publish: {json.dumps(workspaces)}", file=sys.stderr)
-          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as fh:
-              fh.write("workspaces=" + json.dumps(workspaces) + "\n")
-          PY
+        run: python3 scripts/parasol-allow-list.py --workspaces-json
 
   prepare:
     runs-on: ubuntu-latest

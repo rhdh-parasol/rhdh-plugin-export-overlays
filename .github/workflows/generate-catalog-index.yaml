@@ -11,7 +11,7 @@ on:
       - 'default.packages.yaml'
       - 'rhdh-supported-packages.txt'
       - 'rhdh-community-packages.txt'
-      - 'parasol-community-packages.txt'
+      - 'parasol-publish-workspaces.txt'
       - 'scripts/**'
       - 'versions.json'
       - '.github/workflows/generate-catalog-index.yaml'
@@ -142,12 +142,13 @@ jobs:
       - name: Generate community catalog
         id: gen-community
         run: |
+          python3 scripts/parasol-allow-list.py --packages-file /tmp/parasol-packages.txt
           if scripts/update-index.sh \
             --overlays-dir . \
             --registry "$COMMUNITY_REGISTRY" \
             --output-dir catalog-index/community \
             --plugin-builds-dir plugin_builds/community \
-            --packages-file parasol-community-packages.txt \
+            --packages-file /tmp/parasol-packages.txt \
             --report-file catalog-index/community/build-report.json; then
             echo "ok=true" >> "$GITHUB_OUTPUT"
           else
