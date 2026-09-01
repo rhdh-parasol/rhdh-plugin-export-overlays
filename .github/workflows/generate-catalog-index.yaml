@@ -11,6 +11,7 @@ on:
       - 'default.packages.yaml'
       - 'rhdh-supported-packages.txt'
       - 'rhdh-community-packages.txt'
+      - 'parasol-community-packages.txt'
       - 'scripts/**'
       - 'versions.json'
       - '.github/workflows/generate-catalog-index.yaml'
@@ -32,8 +33,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  COMMUNITY_REGISTRY: 'ghcr.io/redhat-developer/rhdh-plugin-export-overlays'
-  COMMUNITY_CATALOG_INDEX: 'ghcr.io/redhat-developer/rhdh-plugin-export-overlays/plugin-catalog-index'
+  # Fork GHCR (issue #5). Do not push to redhat-developer or quay.io/rhdh-community.
+  COMMUNITY_REGISTRY: ghcr.io/${{ github.repository }}
+  COMMUNITY_CATALOG_INDEX: ghcr.io/${{ github.repository }}/plugin-catalog-index
   SUPPORTED_CATALOG_INDEX: 'quay.io/rhdh-community/plugin-catalog-index'
   YQ_VERSION: '4.53.2'
 
@@ -130,44 +132,12 @@ jobs:
           echo "Backstage version: $BS_VERSION"
           echo "RHDH version: $RHDH_VERSION (from upstream RHDH $RHDH_BRANCH package.json: $RHDH_FULL_VERSION)"
 
-      - name: Generate supported catalog
+      - name: Skip supported catalog (fork community slice)
         id: gen-supported
-        env:
-          RHDH_VERSION: ${{ steps.versions.outputs.rhdh-version }}
         run: |
-          RHDH_VERSION_ARG=""
-          if [[ -n "$RHDH_VERSION" ]]; then
-            RHDH_VERSION_ARG="--rhdh-version $RHDH_VERSION"
-          fi
-
-          # shellcheck disable=SC2086
-          if scripts/update-index.sh \
-            --overlays-dir . \
-            --registry "$COMMUNITY_REGISTRY" \
-            --output-dir catalog-index/supported \
-            --plugin-builds-dir plugin_builds/supported \
-            --packages-file default.packages.yaml \
-            --packages-file rhdh-supported-packages.txt \
-            --report-file catalog-index/supported/build-report.json \
-            $RHDH_VERSION_ARG; then
-            echo "ok=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "::warning::Supported catalog generation failed"
-            echo "ok=false" >> "$GITHUB_OUTPUT"
-            echo "clean=false" >> "$GITHUB_OUTPUT"
-          fi
-
-          # Check if the catalog is clean (no fallbacks or missing plugins)
-          REPORT="catalog-index/supported/build-report.json"
-          if [[ -f "$REPORT" ]]; then
-            FAILED=$(jq '.summary.failed // 0' "$REPORT" 2>/dev/null || echo 0)
-            FALLBACKS=$(jq '[.plugins[] | select(.stages["image-metadata-fetch"].fallback == true)] | length' "$REPORT" 2>/dev/null || echo 0)
-            if [[ "$FAILED" -eq 0 && "$FALLBACKS" -eq 0 ]]; then
-              echo "clean=true" >> "$GITHUB_OUTPUT"
-            else
-              echo "clean=false" >> "$GITHUB_OUTPUT"
-            fi
-          fi
+          echo "ok=false" >> "$GITHUB_OUTPUT"
+          echo "clean=false" >> "$GITHUB_OUTPUT"
+          echo "Skipping supported/Quay catalog on this fork until QUAY_TOKEN is configured (issue #8)."
 
       - name: Generate community catalog
         id: gen-community
@@ -177,7 +147,7 @@ jobs:
             --registry "$COMMUNITY_REGISTRY" \
             --output-dir catalog-index/community \
             --plugin-builds-dir plugin_builds/community \
-            --packages-file rhdh-community-packages.txt \
+            --packages-file parasol-community-packages.txt \
             --report-file catalog-index/community/build-report.json; then
             echo "ok=true" >> "$GITHUB_OUTPUT"
           else
@@ -268,9 +238,12 @@ jobs:
           SUPPORTED_CLEAN: ${{ steps.gen-supported.outputs.clean }}
           COMMUNITY_CLEAN: ${{ steps.gen-community.outputs.clean }}
         run: |
-          if [[ "${SUPPORTED_OK}" != "true" || "${COMMUNITY_OK}" != "true" ]]; then
-            echo "::error::Catalog generation failed (supported=$SUPPORTED_OK, community=$COMMUNITY_OK)"
+          if [[ "${COMMUNITY_OK}" != "true" ]]; then
+            echo "::error::Community catalog generation failed (community=$COMMUNITY_OK)"
             exit 1
+          fi
+          if [[ "${SUPPORTED_OK}" != "true" ]]; then
+            echo "::notice::Supported/Quay catalog skipped on this fork (issue #8)"
           fi
 
           # Surface fallbacks and missing plugins as warnings

@@ -1,0 +1,8 @@
+# Fork allow-list for automatic OCI publish (issue #5).
+# One workspace directory name per line (under workspaces/).
+# Comments and blank lines are ignored.
+#
+# Automatic publish on main / release-* and Create Release Branch export
+# only these workspaces. An empty list publishes nothing (no full sweep).
+# Expand by adding more names; do not remove this file.
+todo

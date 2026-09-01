@@ -1,0 +1,8 @@
+# Community catalog-index slice for this fork (issue #5).
+# Same path format as rhdh-community-packages.txt:
+#   <workspace-folder>/plugins/<plugin-folder>
+#
+# Keep this in sync with parasol-publish-workspaces.txt. Catalog generation
+# looks up images in ghcr.io/<this-repo>, not redhat-developer.
+todo/plugins/todo
+todo/plugins/todo-backend
