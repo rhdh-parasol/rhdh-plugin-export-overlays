@@ -191,7 +191,9 @@ def workspace_packages(workspace_dir: Path) -> list[dict[str, Any]]:
 
 
 def extension_refs(
-    repo_root: Path, workspace_dir: Path
+    repo_root: Path,
+    workspace_dir: Path,
+    plugin_entity_index: dict[str, list[dict[str, Any]]] | None = None,
 ) -> tuple[list[str], list[str]]:
     """Derive verified Plugin and Package refs from existing Extensions YAML."""
     packages = workspace_packages(workspace_dir)
@@ -217,7 +219,13 @@ def extension_refs(
             plugin_ref = canonical_entity_ref("plugin", *normalized)
             packages_by_plugin[plugin_ref].add(package_name)
 
-    plugin_entities = extension_entities(repo_root)
+    # The index is shared across all workspaces during a generation. Keep the
+    # fallback for callers/tests that resolve one workspace directly.
+    plugin_entities = (
+        plugin_entity_index
+        if plugin_entity_index is not None
+        else extension_entities(repo_root)
+    )
     plugin_refs: list[str] = []
     for plugin_ref, package_names in sorted(packages_by_plugin.items()):
         matches = plugin_entities.get(plugin_ref, [])
@@ -403,6 +411,7 @@ def planned_files(
     repo_root: Path, overlay_slug: str
 ) -> list[tuple[Path, str]]:
     workspaces = discover_workspaces(repo_root)
+    plugin_entity_index = extension_entities(repo_root)
     files: list[tuple[Path, str]] = [
         (
             repo_root / "catalog-info.yaml",
@@ -412,7 +421,9 @@ def planned_files(
     for workspace_dir in workspaces:
         source = load_source_json(workspace_dir)
         plugin_paths = read_plugins_list(workspace_dir)
-        plugin_refs, package_refs = extension_refs(repo_root, workspace_dir)
+        plugin_refs, package_refs = extension_refs(
+            repo_root, workspace_dir, plugin_entity_index
+        )
         entity = build_workspace_entity(
             workspace_dir.name,
             source,
@@ -540,7 +551,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.check:
         return check_files(files)
 
-    write_files(files, dry_run=args.dry_run)
+    write_files(files, dry_run=args.dry_run, repo_root=repo_root)
     log_info(f"{len(files)} catalog-info.yaml file(s)")
     return 0
 
