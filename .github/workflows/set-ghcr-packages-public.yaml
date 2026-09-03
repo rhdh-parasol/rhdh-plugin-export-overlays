@@ -1,0 +1,107 @@
+name: Set GHCR packages public
+
+# Experiment: GitHub's documented REST API has no "set visibility" operation
+# (org package routes are GET/DELETE only). This job tries the unofficial
+# PATCH that some projects use, with GITHUB_TOKEN + packages:write.
+on:
+  # Push runs this on the PR branch (workflow_dispatch only exists after merge to main).
+  push:
+    paths:
+      - ".github/workflows/set-ghcr-packages-public.yaml"
+  workflow_dispatch:
+    inputs:
+      package_names:
+        description: >-
+          Newline-separated container package names under this org
+          (include the repo prefix).
+        required: false
+        default: |
+          rhdh-plugin-export-overlays/backstage-community-plugin-todo
+          rhdh-plugin-export-overlays/backstage-community-plugin-todo-backend
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  set-public:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Try PATCH visibility on each package
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_HOST: github.com
+          ORG: ${{ github.repository_owner }}
+          PACKAGE_NAMES: ${{ inputs.package_names }}
+        run: |
+          set -u
+          python3 - <<'PY'
+          import json, os, subprocess, sys, urllib.parse
+
+          org = os.environ["ORG"]
+          raw = os.environ.get("PACKAGE_NAMES", "")
+          names = []
+          for line in raw.splitlines():
+              line = line.split("#", 1)[0].strip()
+              if line:
+                  names.append(line)
+
+          if not names:
+              names = [
+                  "rhdh-plugin-export-overlays/backstage-community-plugin-todo",
+                  "rhdh-plugin-export-overlays/backstage-community-plugin-todo-backend",
+              ]
+
+          def gh_api(method, path, *extra):
+              cmd = ["gh", "api", "--method", method, "-i", path, *extra]
+              print(f"\n===== {method} {path} {extra} =====", flush=True)
+              proc = subprocess.run(cmd, capture_output=True, text=True)
+              out = (proc.stdout or "") + (proc.stderr or "")
+              print(out[:4000], flush=True)
+              return proc.returncode, out
+
+          any_ok = False
+          for name in names:
+              encoded = urllib.parse.quote(name, safe="")
+              base = f"orgs/{org}/packages/container/{encoded}"
+              print(f"\n########## {name} ##########", flush=True)
+              gh_api("GET", base)
+              for method, path, extra in [
+                  ("PATCH", base, ["-f", "visibility=public"]),
+                  ("PATCH", f"{base}/visibility", ["-f", "visibility=public"]),
+                  ("POST", f"{base}/visibility", ["-f", "visibility=public"]),
+              ]:
+                  code, out = gh_api(method, path, *extra)
+                  if code == 0 and ("\"visibility\": \"public\"" in out or "204" in out[:80]):
+                      any_ok = True
+              preview = [
+                  "-H",
+                  "Accept: application/vnd.github.package-deletes-preview+json",
+                  "-f",
+                  "visibility=public",
+              ]
+              gh_api("PATCH", base, *preview)
+
+          print("\n########## GET after attempts ##########", flush=True)
+          failed = False
+          for name in names:
+              encoded = urllib.parse.quote(name, safe="")
+              path = f"orgs/{org}/packages/container/{encoded}"
+              proc = subprocess.run(
+                  ["gh", "api", path, "--jq", ".visibility"],
+                  capture_output=True,
+                  text=True,
+              )
+              vis = (proc.stdout or proc.stderr or "").strip()
+              print(f"{name}: visibility={vis!r} exit={proc.returncode}", flush=True)
+              if vis != "public":
+                  failed = True
+
+          if failed:
+              print(
+                  "\nCONCLUSION: GITHUB_TOKEN could not set packages public.",
+                  file=sys.stderr,
+              )
+              sys.exit(1)
+          print("\nCONCLUSION: packages report visibility=public")
+          PY
