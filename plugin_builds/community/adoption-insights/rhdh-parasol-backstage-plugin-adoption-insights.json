@@ -1,0 +1,7 @@
+{
+  "rhdh-parasol-backstage-plugin-adoption-insights": {
+    "workspacePath": "adoption-insights/plugins/adoption-insights",
+    "support": "generally-available",
+    "registryReference": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-adoption-insights:bs_1.52.0__0.9.2"
+  }
+}

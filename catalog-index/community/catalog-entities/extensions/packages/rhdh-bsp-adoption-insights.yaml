@@ -10,14 +10,15 @@ metadata:
     - url: https://issues.redhat.com/browse/RHDHBUGS
       title: "Report issues here. Note: Customers of Red Hat Developer Hub should raise a Red Hat support case instead."
     - title: Source Code
-      url: https://github.com/redhat-developer/rhdh-plugins/tree/main/workspaces/adoption-insights
+      url: https://github.com/rhdh-parasol/rhdh-plugins/tree/main/workspaces/adoption-insights
   annotations:
-    backstage.io/source-location: url:https://github.com/redhat-developer/rhdh-plugins/tree/main/workspaces/adoption-insights
+    backstage.io/source-location: url:https://github.com/rhdh-parasol/rhdh-plugins/tree/main/workspaces/adoption-insights
   tags: []
 spec:
-  packageName: '@red-hat-developer-hub/backstage-plugin-adoption-insights'
-  dynamicArtifact: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-adoption-insights:bs_1.52.0__0.9.1
-  version: 0.9.1
+  packageName: '@rhdh-parasol/backstage-plugin-adoption-insights'
+  # Tag: bs_1.52.0__0.9.2
+  dynamicArtifact: "oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-adoption-insights:bs_1.52.0__0.9.2"
+  version: 0.9.2
   backstage:
     role: frontend-plugin
     supportedVersions: 1.52.0
@@ -31,7 +32,7 @@ spec:
       content:
         dynamicPlugins:
           frontend:
-            red-hat-developer-hub.backstage-plugin-adoption-insights:
+            rhdh-parasol.backstage-plugin-adoption-insights:
               translationResources:
                 - importName: adoptionInsightsTranslations
                   module: Alpha
