@@ -1,12 +1,43 @@
-name: Publish RHDH Release Dynamic Plugin Images 
+name: Publish RHDH Release Dynamic Plugin Images
 on:
   workflow_call:
+    inputs:
+      workspace-path:
+        description: >
+          Single overlay workspace (e.g. workspaces/todo). When set, the allow-list
+          file is ignored. When empty, workspaces are read from
+          parasol-publish-workspaces.txt (empty file = publish nothing).
+        type: string
+        required: false
+        default: ''
+      overlay-branch:
+        description: Overlay git ref to export. Defaults to the caller ref.
+        type: string
+        required: false
+        default: ''
 
 concurrency:
-  group: ${{ github.workflow_ref }}-${{ github.ref }}
+  group: ${{ github.workflow_ref }}-${{ github.ref }}-${{ inputs.overlay-branch }}-${{ inputs.workspace-path }}
   cancel-in-progress: true
 
 jobs:
+  resolve-workspaces:
+    runs-on: ubuntu-latest
+    name: Resolve workspaces
+    outputs:
+      workspaces: ${{ steps.list.outputs.workspaces }}
+    steps:
+      - name: Checkout overlay
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ inputs.overlay-branch || github.ref }}
+
+      - name: Read publish allow-list
+        id: list
+        env:
+          WORKSPACE_PATH: ${{ inputs.workspace-path }}
+        run: python3 scripts/parasol-allow-list.py --workspaces-json
+
   prepare:
     runs-on: ubuntu-latest
     name: Prepare
@@ -18,7 +49,7 @@ jobs:
         id: get-last-published-commit
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
-          INPUT_RELEASE_BRANCH: ${{ github.ref_name }}      
+          INPUT_RELEASE_BRANCH: ${{ github.ref_name }}
         with:
           script: |
             core.info(`Getting latest commit on branch ${core.getInput('release_branch')}`);
@@ -41,7 +72,7 @@ jobs:
             });
 
             for (const run of runs.data.workflow_runs) {
-              if (context.payload.commits.some(c => c.id === run.head_sha)) {
+              if (context.payload.commits && context.payload.commits.some(c => c.id === run.head_sha)) {
                 core.info(`Skipping run ${run.id} for commit ${run.head_sha}, it's part of the push`);
                 continue;
               }
@@ -53,7 +84,9 @@ jobs:
                 filter: 'latest',
               });
 
-              const exportJobs = jobs.data.jobs.filter(j => j.name.startsWith('export /'));
+              const exportJobs = jobs.data.jobs.filter(j =>
+                j.name.startsWith('export') && j.conclusion !== 'skipped'
+              );
               if (exportJobs.length > 0 && exportJobs.every(j => j.conclusion === 'success')) {
                 core.info(`Last published commit to compare with: ${run.head_sha}`);
                 core.setOutput('last-published-commit', run.head_sha);
@@ -64,14 +97,22 @@ jobs:
 
             core.info('Last published commit not found');
             core.setOutput('last-published-commit', '');
-            
+
   export:
     uses: redhat-developer/rhdh-plugin-export-utils/.github/workflows/export-workspaces-as-dynamic.yaml@main
     needs:
+      - resolve-workspaces
       - prepare
+    if: needs.resolve-workspaces.outputs.workspaces != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        workspace: ${{ fromJSON(needs.resolve-workspaces.outputs.workspaces) }}
 
     with:
       publish-container: true
+      workspace-path: ${{ matrix.workspace }}
+      overlay-branch: ${{ inputs.overlay-branch }}
       image-repository-prefix: ${{ format('ghcr.io/{0}', github.repository) }}
       last-publish-commit: ${{ needs.prepare.outputs.last-published-commit }}
       # use empty prefix so that we will prepend bs_1.yy.z__ instead of next__
@@ -80,7 +121,7 @@ jobs:
 
     secrets:
       image-registry-password: ${{ secrets.GITHUB_TOKEN }}
-  
+
     permissions:
       contents: write
       attestations: write

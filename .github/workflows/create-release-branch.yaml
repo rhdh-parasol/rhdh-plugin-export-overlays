@@ -120,19 +120,11 @@ jobs:
       contents: write
 
   export:
-    uses: redhat-developer/rhdh-plugin-export-utils/.github/workflows/export-workspaces-as-dynamic.yaml@main
+    uses: ./.github/workflows/publish-release-branch-workspace-plugins.yaml
     needs:
       - create
-
     with:
-      publish-container: true
-      image-repository-prefix: ${{ format('ghcr.io/{0}', github.repository) }}
       overlay-branch: ${{ inputs.release-branch }}
-      image-registry-user: ${{ github.actor }}
-
-    secrets:
-      image-registry-password: ${{ secrets.GITHUB_TOKEN }}
-  
     permissions:
       contents: write
       attestations: write
