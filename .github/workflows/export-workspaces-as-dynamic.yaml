@@ -117,7 +117,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  refuse-unscoped-publish:
+    name: Refuse unscoped container publish
+    if: >
+      github.event_name == 'workflow_dispatch' &&
+      inputs.publish-container &&
+      inputs.workspace-path == ''
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if publishing every workspace
+        run: |
+          echo "::error::Refusing to publish all workspaces from workflow_dispatch."
+          echo "Set workspace-path (for example workspaces/todo), or use the allow-listed main publish workflow."
+          exit 1
+
   export:
+    needs:
+      - refuse-unscoped-publish
+    if: always() && needs.refuse-unscoped-publish.result != 'failure'
     uses: redhat-developer/rhdh-plugin-export-utils/.github/workflows/export-workspaces-as-dynamic.yaml@main
     with:
       node-version: ${{ inputs.node-version }}
@@ -127,7 +144,7 @@ jobs:
       overlay-branch: ${{ inputs.overlay-branch }}
       workspace-path: ${{ inputs.workspace-path }}
       publish-container: ${{ inputs.publish-container }}
-      image-repository-prefix: ${{ inputs.image-repository-prefix }}
+      image-repository-prefix: ${{ inputs.image-repository-prefix != '' && inputs.image-repository-prefix || (inputs.publish-container && format('ghcr.io/{0}', github.repository) || '') }}
       image-registry-user: ${{ inputs.image-registry-user || github.actor }}
       
     secrets:

@@ -7,7 +7,7 @@ on:
 
 jobs:
   export:
-    uses: redhat-developer/rhdh-plugin-export-overlays/.github/workflows/publish-release-branch-workspace-plugins.yaml@main
+    uses: ./.github/workflows/publish-release-branch-workspace-plugins.yaml
     permissions:
       contents: write
       attestations: write
