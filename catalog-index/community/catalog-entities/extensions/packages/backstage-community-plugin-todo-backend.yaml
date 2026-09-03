@@ -16,7 +16,7 @@ metadata:
 spec:
   packageName: "@backstage-community/plugin-todo-backend"
   # Tag: bs_1.52.0__0.23.0
-  dynamicArtifact: "oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-todo-backend@sha256:372edb5a39db6f64f083e93035e739dcac384c20f0c602d621ad9003b8e04d9e"
+  dynamicArtifact: "oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/backstage-community-plugin-todo-backend@sha256:3a1e2cfcadce6f40e2c15a57cedcdc057e19d0bd6d2f893c376f794e12d6a971"
   version: 0.23.0
   backstage:
     role: backend-plugin
