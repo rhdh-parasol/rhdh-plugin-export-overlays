@@ -1,7 +1,9 @@
 {
   "rhdh-parasol-backstage-plugin-scorecard": {
     "workspacePath": "scorecard/plugins/scorecard",
+    "registryReference": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard:bs_1.52.0__5.0.1",
+    "digest": "sha256:b33eeb8abf27ea2ad272c62b421fff10e12d24386dd8fc5a12d8709c70ad4298",
     "support": "dev-preview",
-    "registryReference": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard:bs_1.52.0__5.0.1"
+    "io.backstage.dynamic-packages": "W3sicmhkaC1wYXJhc29sLWJhY2tzdGFnZS1wbHVnaW4tc2NvcmVjYXJkIjp7Im5hbWUiOiJAcmhkaC1wYXJhc29sL2JhY2tzdGFnZS1wbHVnaW4tc2NvcmVjYXJkLWR5bmFtaWMiLCJ2ZXJzaW9uIjoiNS4wLjEiLCJiYWNrc3RhZ2UiOnsicm9sZSI6ImZyb250ZW5kLXBsdWdpbiIsInBsdWdpbklkIjoic2NvcmVjYXJkIiwicGx1Z2luUGFja2FnZXMiOlsiQHJoZGgtcGFyYXNvbC9iYWNrc3RhZ2UtcGx1Z2luLXNjb3JlY2FyZCIsIkByaGRoLXBhcmFzb2wvYmFja3N0YWdlLXBsdWdpbi1zY29yZWNhcmQtYmFja2VuZCIsIkByaGRoLXBhcmFzb2wvYmFja3N0YWdlLXBsdWdpbi1zY29yZWNhcmQtY29tbW9uIiwiQHJoZGgtcGFyYXNvbC9iYWNrc3RhZ2UtcGx1Z2luLXNjb3JlY2FyZC1ub2RlIl0sImZlYXR1cmVzIjp7Ii4iOiJAYmFja3N0YWdlL0Zyb250ZW5kUGx1Z2luIiwiLi9zY29yZWNhcmQtdHJhbnNsYXRpb25zLW1vZHVsZSI6IkBiYWNrc3RhZ2UvRnJvbnRlbmRNb2R1bGUifSwic3VwcG9ydGVkLXZlcnNpb25zIjoiMS41Mi4wIn0sInJlcG9zaXRvcnkiOnsidHlwZSI6ImdpdCIsInVybCI6Imh0dHBzOi8vZ2l0aHViLmNvbS9yaGRoLXBhcmFzb2wvcmhkaC1wbHVnaW5zIiwiZGlyZWN0b3J5Ijoid29ya3NwYWNlcy9zY29yZWNhcmQvcGx1Z2lucy9zY29yZWNhcmQifSwibGljZW5zZSI6IkFwYWNoZS0yLjAifX1d"
   }
 }

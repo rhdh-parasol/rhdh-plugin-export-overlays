@@ -18,7 +18,7 @@ metadata:
 spec:
   packageName: "@rhdh-parasol/backstage-plugin-scorecard-backend-module-jira"
   # Tag: bs_1.52.0__5.0.1
-  dynamicArtifact: "oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-jira:bs_1.52.0__5.0.1"
+  dynamicArtifact: "oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-jira@sha256:2323bf3469aab11c012be96a72e2421dd128750dbf01fa3e54774f17cd59eee9"
   version: 5.0.1
   backstage:
     role: backend-plugin-module

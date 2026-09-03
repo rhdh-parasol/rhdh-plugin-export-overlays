@@ -18,7 +18,7 @@ metadata:
 spec:
   packageName: "@rhdh-parasol/backstage-plugin-scorecard-backend-module-sonarqube"
   # Tag: bs_1.52.0__2.0.1
-  dynamicArtifact: "oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-sonarqube:bs_1.52.0__2.0.1"
+  dynamicArtifact: "oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-sonarqube@sha256:8c80e09fd928d48dabe12446d01e1bcce22e30ee6746a4dd8b9901da71daa100"
   version: 2.0.1
   backstage:
     role: backend-plugin-module

@@ -18,7 +18,7 @@ metadata:
 spec:
   packageName: "@rhdh-parasol/backstage-plugin-scorecard-backend-module-dependabot"
   # Tag: bs_1.52.0__2.0.1
-  dynamicArtifact: "oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-dependabot:bs_1.52.0__2.0.1"
+  dynamicArtifact: "oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-dependabot@sha256:56f9d004a2e04942aafe482d049960621590c600eece245a6fde3930585394e6"
   version: 2.0.1
   backstage:
     role: backend-plugin-module
