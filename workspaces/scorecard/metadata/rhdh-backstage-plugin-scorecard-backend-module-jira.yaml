@@ -10,15 +10,15 @@ metadata:
     - url: https://issues.redhat.com/browse/RHDHBUGS
       title: "Report issues here. Note: Customers of Red Hat Developer Hub should raise a Red Hat support case instead."
     - title: Source Code
-      url: https://github.com/redhat-developer/rhdh-plugins/tree/main/workspaces/scorecard/plugins/scorecard-backend-module-jira
+      url: https://github.com/rhdh-parasol/rhdh-plugins/tree/main/workspaces/scorecard/plugins/scorecard-backend-module-jira
   annotations:
-    backstage.io/source-location: url:https://github.com/redhat-developer/rhdh-plugins/tree/main/workspaces/scorecard/plugins/scorecard-backend-module-jira
+    backstage.io/source-location: url:https://github.com/rhdh-parasol/rhdh-plugins/tree/main/workspaces/scorecard/plugins/scorecard-backend-module-jira
   tags:
     - analytics
 spec:
-  packageName: "@red-hat-developer-hub/backstage-plugin-scorecard-backend-module-jira"
-  dynamicArtifact: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard-backend-module-jira:bs_1.52.0__4.1.0
-  version: 4.1.0
+  packageName: "@rhdh-parasol/backstage-plugin-scorecard-backend-module-jira"
+  dynamicArtifact: oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-jira:bs_1.52.0__5.0.1
+  version: 5.0.1
   backstage:
     role: backend-plugin-module
     supportedVersions: 1.52.0

@@ -2,3 +2,4 @@
 # To publish another: add the name here, and point that workspace's
 # metadata spec.dynamicArtifact at ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/...
 todo
+scorecard
