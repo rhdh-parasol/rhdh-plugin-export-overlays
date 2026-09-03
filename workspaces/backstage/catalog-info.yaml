@@ -8,6 +8,29 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'backstage' (101 packages). Upstream source pinned at v1.52.0.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: backstage
+    rhdh.io/source-repository: https://github.com/backstage/backstage
+    rhdh.io/source-revision: v1.52.0
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/azure-scaffolder-actions, plugin:rhdh/backstage-plugin-catalog-backend-module-github,
+      plugin:rhdh/backstage-plugin-catalog-backend-module-github-org, plugin:rhdh/backstage-plugin-events-backend-module-github,
+      plugin:rhdh/backstage-plugin-events-backend-module-gitlab, plugin:rhdh/bitbucket-cloud-catalog-integration, plugin:rhdh/bitbucket-cloud-scaffolder-actions,
+      plugin:rhdh/bitbucket-server-catalog-integration, plugin:rhdh/bitbucket-server-scaffolder-actions, plugin:rhdh/contrib-techdocs-addons,
+      plugin:rhdh/gerrit-scaffolder-actions, plugin:rhdh/github-scaffolder-actions, plugin:rhdh/gitlab-catalog-integration,
+      plugin:rhdh/gitlab-org-catalog-integration, plugin:rhdh/gitlab-scaffolder-actions, plugin:rhdh/ldap-catalog-integration,
+      plugin:rhdh/mcp-actions-backend, plugin:rhdh/microsoft-graph-catalog-integration, plugin:rhdh/notifications, plugin:rhdh/notifications-email,
+      plugin:rhdh/signals-backend, plugin:rhdh/signals-frontend, plugin:rhdh/techdocs
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-plugin-app-visualizer, package:rhdh/backstage-plugin-auth, package:rhdh/backstage-plugin-catalog-backend-module-bitbucket-cloud,
+      package:rhdh/backstage-plugin-catalog-backend-module-bitbucket-server, package:rhdh/backstage-plugin-catalog-backend-module-github,
+      package:rhdh/backstage-plugin-catalog-backend-module-github-org, package:rhdh/backstage-plugin-catalog-backend-module-gitlab,
+      package:rhdh/backstage-plugin-catalog-backend-module-gitlab-org, package:rhdh/backstage-plugin-catalog-backend-module-ldap,
+      package:rhdh/backstage-plugin-catalog-backend-module-msgraph, package:rhdh/backstage-plugin-events-backend-module-github,
+      package:rhdh/backstage-plugin-events-backend-module-gitlab, package:rhdh/backstage-plugin-kubernetes, package:rhdh/backstage-plugin-kubernetes-backend,
+      package:rhdh/backstage-plugin-mcp-actions-backend, package:rhdh/backstage-plugin-notifications, package:rhdh/backstage-plugin-notifications-backend,
+      package:rhdh/backstage-plugin-notifications-backend-module-email, package:rhdh/backstage-plugin-scaffolder-backend-module-azure,
+      package:rhdh/backstage-plugin-scaffolder-backend-module-bitbucket-cloud, package:rhdh/backstage-plugin-scaffolder-backend-module-bitbucket-server,
+      package:rhdh/backstage-plugin-scaffolder-backend-module-gerrit, package:rhdh/backstage-plugin-scaffolder-backend-module-github,
+      package:rhdh/backstage-plugin-scaffolder-backend-module-gitlab, package:rhdh/backstage-plugin-signals, package:rhdh/backstage-plugin-signals-backend,
+      package:rhdh/backstage-plugin-techdocs, package:rhdh/backstage-plugin-techdocs-backend, package:rhdh/backstage-plugin-techdocs-module-addons-contrib
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +51,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'tekton' (1 package). Upstream source pinned at 9d25206.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: tekton
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: 9d252065fdcb79567e7713de19b254d269286402
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/tekton
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-plugin-tekton
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +33,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

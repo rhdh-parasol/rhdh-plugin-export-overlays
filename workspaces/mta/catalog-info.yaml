@@ -8,6 +8,12 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'mta' (4 packages). Upstream source pinned at e9e8d98.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: mta
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: e9e8d98cc296f75148c0c21df302bad0b31d9786
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-backstage-plugin-catalog-backend-module-mta-entity-provider,
+      package:rhdh/backstage-community-backstage-plugin-mta-backend, package:rhdh/backstage-community-backstage-plugin-mta-frontend,
+      package:rhdh/backstage-community-backstage-plugin-scaffolder-backend-module-mta
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +34,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

@@ -9,6 +9,11 @@ metadata:
     pinned at 74b1c23.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: scaffolder-backend-module-sonarqube
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: 74b1c23497e8562b30f9761a3d07fa6564f29598
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/sonarqube-scaffolder-actions
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-plugin-scaffolder-backend-module-sonarqube
   tags:
     - overlay
     - dynamic-plugin
@@ -29,4 +34,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

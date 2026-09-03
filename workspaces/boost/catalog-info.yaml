@@ -8,6 +8,10 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'boost' (2 packages). Upstream source pinned at b6e0f31.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: boost
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: b6e0f31d193dd2b0f95ca7ac71794747c522d421
+    rhdh.io/extensions-package-refs: package:rhdh/red-hat-developer-hub-backstage-plugin-boost, package:rhdh/red-hat-developer-hub-backstage-plugin-ogx-entity-provider
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +32,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/boost

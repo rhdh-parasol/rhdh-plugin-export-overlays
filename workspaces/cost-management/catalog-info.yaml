@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'cost-management' (2 packages). Upstream source pinned at 61b7b31.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: cost-management
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: 61b7b31a3a37454599058c4799012d30a98959b9
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/cost-management
+    rhdh.io/extensions-package-refs: package:rhdh/cost-management, package:rhdh/cost-management-backend
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +33,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/cost-management

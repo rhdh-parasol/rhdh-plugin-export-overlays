@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'pagerduty' (4 packages). Upstream source pinned at d8cee58.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: pagerduty
+    rhdh.io/source-repository: https://github.com/PagerDuty/backstage-plugins
+    rhdh.io/source-revision: d8cee583c60072e5e5dea67d09376b0b47db15cc
+    rhdh.io/extensions-package-refs: package:rhdh/pagerduty-backstage-plugin, package:rhdh/pagerduty-backstage-plugin-backend,
+      package:rhdh/pagerduty-backstage-plugin-entity-processor, package:rhdh/pagerduty-backstage-plugin-scaffolder-actions
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +33,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

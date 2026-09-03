@@ -8,6 +8,12 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'ai-integrations' (6 packages). Upstream source pinned at 0a6959a.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: ai-integrations
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: 0a6959adbd2d60ad9ee6a749f2edefb4442ba9b1
+    rhdh.io/extensions-package-refs: package:rhdh/rhdh-bs-plugin-catalog-backend-module-ai-model-server, package:rhdh/rhdh-bs-plugin-catalog-backend-module-ai-resource-agent,
+      package:rhdh/rhdh-bs-plugin-catalog-backend-module-ai-resource-extensions, package:rhdh/rhdh-bs-plugin-catalog-backend-module-model-catalog,
+      package:rhdh/rhdh-bs-plugin-catalog-techdoc-url-reader-backend, package:rhdh/rhdh-bs-plugin-kserve-kubeflow-connector-backend
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +34,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/ai-integrations

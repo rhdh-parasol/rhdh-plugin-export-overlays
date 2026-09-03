@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace '3scale' (1 package). Upstream source pinned at 0e830be.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: 3scale
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: 0e830be044ca334c5304b541e4757b621eb1e6db
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/3scale
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-plugin-3scale-backend
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +33,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

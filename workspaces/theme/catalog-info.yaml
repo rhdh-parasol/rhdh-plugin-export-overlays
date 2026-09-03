@@ -8,6 +8,10 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'theme' (6 packages). Upstream source pinned at 8c71ca0.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: theme
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: 8c71ca0dc7bc76518113a819a396eab2d17ea785
+    rhdh.io/extensions-package-refs: package:rhdh/red-hat-developer-hub-backstage-plugin-qe-theme, package:rhdh/red-hat-developer-hub-backstage-plugin-theme
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +32,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/red-hat-developer-hub-theme

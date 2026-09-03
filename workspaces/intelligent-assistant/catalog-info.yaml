@@ -9,6 +9,11 @@ metadata:
     20a7215.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: intelligent-assistant
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: 20a7215d04a75f8e7b4c51bf553a3a9016b14736
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/intelligent-assistant
+    rhdh.io/extensions-package-refs: package:rhdh/red-hat-developer-hub-backstage-plugin-intelligent-assistant, package:rhdh/red-hat-developer-hub-backstage-plugin-intelligent-assistant-backend
   tags:
     - overlay
     - dynamic-plugin
@@ -29,6 +34,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/developer-intelligent-assistant

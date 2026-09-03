@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'jenkins' (3 packages). Upstream source pinned at b08cbb6.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: jenkins
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: b08cbb69db33f0e7b443b81d1dbc267f12bd57eb
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-plugin-jenkins, package:rhdh/backstage-community-plugin-jenkins-backend,
+      package:rhdh/bcp-scaffolder-backend-mod-jenkins
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +33,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

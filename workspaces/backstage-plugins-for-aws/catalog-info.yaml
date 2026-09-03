@@ -9,6 +9,12 @@ metadata:
     at 7b8aa4a.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: backstage-plugins-for-aws
+    rhdh.io/source-repository: https://github.com/awslabs/backstage-plugins-for-aws
+    rhdh.io/source-revision: 7b8aa4a6e7f98126209e9a7949e817d316399555
+    rhdh.io/extensions-package-refs: package:community/aws-amazon-ecs-plugin-for-backstage, package:community/aws-amazon-ecs-plugin-for-backstage-backend,
+      package:community/aws-aws-codebuild-plugin-for-backstage, package:community/aws-aws-codebuild-plugin-for-backstage-backend,
+      package:community/aws-aws-codepipeline-plugin-for-backstage, package:community/aws-aws-codepipeline-plugin-for-backstage-backend
   tags:
     - overlay
     - dynamic-plugin
@@ -29,4 +35,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

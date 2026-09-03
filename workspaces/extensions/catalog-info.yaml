@@ -8,6 +8,12 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'extensions' (3 packages). Upstream source pinned at 06b9127.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: extensions
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: 06b9127a23dda69d09fb33710e08da46b1c719b2
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/extensions
+    rhdh.io/extensions-package-refs: package:rhdh/rhdh-bsp-ctlg-backend-mod-extensions, package:rhdh/rhdh-bsp-extensions,
+      package:rhdh/rhdh-bsp-extensions-backend
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +34,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/red-hat-developer-hub-extensions
