@@ -1,6 +1,6 @@
 {
-  "source-repo": "https://github.com/rhdh-parasol/rhdh-plugin-export-overlays/tree/main @ 6abe032c",
-  "build-date": "2026-09-01T13:11:11Z",
+  "source-repo": "https://github.com/rhdh-parasol/rhdh-plugin-export-overlays/tree/main @ 1e0d1ed3",
+  "build-date": "2026-09-03T11:50:45Z",
   "backstage-version": "1.52.0",
   "rhdh-version": "2.0"
 }
