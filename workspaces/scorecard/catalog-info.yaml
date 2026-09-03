@@ -5,7 +5,7 @@ kind: Component
 metadata:
   name: overlay-scorecard
   title: Overlay workspace scorecard
-  description: Dynamic-plugin export overlay for workspace 'scorecard' (8 packages). Upstream source pinned at 98cb95c.
+  description: Dynamic-plugin export overlay for workspace 'scorecard' (8 packages). Upstream source pinned at 45fe3a5.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
   tags:
@@ -16,7 +16,7 @@ metadata:
       title: Overlay workspace
       icon: github
       type: source
-    - url: https://github.com/redhat-developer/rhdh-plugins/tree/98cb95c73d3e6919d704f8b53fdca0598d156ec9/workspaces/scorecard
+    - url: https://github.com/rhdh-parasol/rhdh-plugins/tree/45fe3a50479d109cdbcbde7dbf9a60b27d0cc4b4/workspaces/scorecard
       title: Upstream source
       icon: github
       type: upstream
