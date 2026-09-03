@@ -3,3 +3,4 @@
 # metadata spec.dynamicArtifact at ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/...
 todo
 scorecard
+adoption-insights
