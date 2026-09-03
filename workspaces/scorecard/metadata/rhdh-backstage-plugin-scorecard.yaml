@@ -10,15 +10,15 @@ metadata:
     - url: https://issues.redhat.com/browse/RHDHBUGS
       title: "Report issues here. Note: Customers of Red Hat Developer Hub should raise a Red Hat support case instead."
     - title: Source Code
-      url: https://github.com/redhat-developer/rhdh-plugins/tree/main/workspaces/scorecard/plugins/scorecard
+      url: https://github.com/rhdh-parasol/rhdh-plugins/tree/main/workspaces/scorecard/plugins/scorecard
   annotations:
-    backstage.io/source-location: url:https://github.com/redhat-developer/rhdh-plugins/tree/main/workspaces/scorecard/plugins/scorecard
+    backstage.io/source-location: url:https://github.com/rhdh-parasol/rhdh-plugins/tree/main/workspaces/scorecard/plugins/scorecard
   tags:
     - analytics
 spec:
-  packageName: "@red-hat-developer-hub/backstage-plugin-scorecard"
-  dynamicArtifact: oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/red-hat-developer-hub-backstage-plugin-scorecard:bs_1.52.0__4.1.0
-  version: 4.1.0
+  packageName: "@rhdh-parasol/backstage-plugin-scorecard"
+  dynamicArtifact: oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard:bs_1.52.0__5.0.1
+  version: 5.0.1
   backstage:
     role: frontend-plugin
     supportedVersions: 1.52.0
@@ -32,7 +32,7 @@ spec:
       content:
         dynamicPlugins:
           frontend:
-            red-hat-developer-hub.backstage-plugin-scorecard:
+            rhdh-parasol.backstage-plugin-scorecard:
               # Legacy exports require `module: Legacy` — they are not available on the default module.
               translationResources:
                 - importName: scorecardTranslations
@@ -60,7 +60,7 @@ spec:
       content:
         dynamicPlugins:
           frontend:
-            red-hat-developer-hub.backstage-plugin-scorecard:
+            rhdh-parasol.backstage-plugin-scorecard:
               - mountPoint: home.page/cards
                 importName: ScorecardHomepageCard
                 module: Legacy
@@ -78,7 +78,7 @@ spec:
       content:
         dynamicPlugins:
           frontend:
-            red-hat-developer-hub.backstage-plugin-scorecard:
+            rhdh-parasol.backstage-plugin-scorecard:
               - mountPoint: home.page/cards
                 importName: ScorecardHomepageCard
                 module: Legacy
@@ -91,7 +91,7 @@ spec:
       content:
         dynamicPlugins:
           frontend:
-            red-hat-developer-hub.backstage-plugin-scorecard:
+            rhdh-parasol.backstage-plugin-scorecard:
               - mountPoint: home.page/cards
                 importName: ScorecardHomepageCard
                 module: Legacy
@@ -104,7 +104,7 @@ spec:
       content:
         dynamicPlugins:
           frontend:
-            red-hat-developer-hub.backstage-plugin-scorecard:
+            rhdh-parasol.backstage-plugin-scorecard:
               - mountPoint: home.page/cards
                 importName: ScorecardHomepageCard
                 module: Legacy
@@ -122,7 +122,7 @@ spec:
       content:
         dynamicPlugins:
           frontend:
-            red-hat-developer-hub.backstage-plugin-scorecard:
+            rhdh-parasol.backstage-plugin-scorecard:
               - mountPoint: home.page/cards
                 importName: ScorecardHomepageCard
                 module: Legacy
@@ -135,7 +135,7 @@ spec:
       content:
         dynamicPlugins:
           frontend:
-            red-hat-developer-hub.backstage-plugin-scorecard:
+            rhdh-parasol.backstage-plugin-scorecard:
               - mountPoint: home.page/cards
                 importName: ScorecardHomepageCard
                 module: Legacy
