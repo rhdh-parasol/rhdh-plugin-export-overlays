@@ -146,6 +146,7 @@ jobs:
           if scripts/update-index.sh \
             --overlays-dir . \
             --registry "$COMMUNITY_REGISTRY" \
+            --community-registry "$COMMUNITY_REGISTRY" \
             --output-dir catalog-index/community \
             --plugin-builds-dir plugin_builds/community \
             --packages-file /tmp/parasol-packages.txt \
