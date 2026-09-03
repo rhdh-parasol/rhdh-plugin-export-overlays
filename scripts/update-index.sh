@@ -173,13 +173,14 @@ fi
 # Build --packages-file args for bootstrapPluginBuilds.py
 BOOTSTRAP_FILTER_ARGS=""
 COMMUNITY_REGISTRY_ARG=""
-if [[ ${#PACKAGES_FILES[@]} -gt 0 ]]; then
+    if [[ ${#PACKAGES_FILES[@]} -gt 0 ]]; then
     for pf in "${PACKAGES_FILES[@]}"; do
         BOOTSTRAP_FILTER_ARGS="$BOOTSTRAP_FILTER_ARGS --packages-file $pf"
     done
-    if [[ "$COMMUNITY_REGISTRY" != "$REGISTRY" ]]; then
-        COMMUNITY_REGISTRY_ARG="--community-registry $COMMUNITY_REGISTRY"
-    fi
+    # Always forward this. bootstrapPluginBuilds.py defaults --community-registry
+    # to ghcr.io/redhat-developer/... independently of --registry; omitting the
+    # flag on a fork (where both are the same GHCR namespace) silently uses upstream.
+    COMMUNITY_REGISTRY_ARG="--community-registry $COMMUNITY_REGISTRY"
 fi
 
 ##############################################
