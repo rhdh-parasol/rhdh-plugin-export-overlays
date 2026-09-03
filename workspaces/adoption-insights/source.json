@@ -1,1 +1,6 @@
-{"repo":"https://github.com/redhat-developer/rhdh-plugins","repo-ref":"be7777a9a9c1e5b52d845eec1bc489df7f5582fd","repo-flat":false,"repo-backstage-version":"1.52.0"}
+{
+  "repo": "https://github.com/rhdh-parasol/rhdh-plugins",
+  "repo-ref": "935e784f389a15ed8781bf891ee85d4c28898798",
+  "repo-flat": false,
+  "repo-backstage-version": "1.52.0"
+}
