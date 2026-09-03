@@ -47,12 +47,196 @@
       "version": "0.22.0",
       "workspace": "todo",
       "overall": "pass"
+    },
+    "rhdh-parasol-backstage-plugin-scorecard-backend-module-dependabot": {
+      "stages": {
+        "bootstrap": {
+          "status": "pass",
+          "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-dependabot:bs_1.52.0__2.0.1"
+        },
+        "image-metadata-fetch": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-dependabot:bs_1.52.0__2.0.1"
+        },
+        "dpdy": {
+          "status": "skip"
+        },
+        "catalog-index": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-dependabot:bs_1.52.0__2.0.1"
+        }
+      },
+      "package": "@rhdh-parasol/backstage-plugin-scorecard-backend-module-dependabot",
+      "version": "2.0.1",
+      "workspace": "scorecard",
+      "overall": "fail"
+    },
+    "rhdh-parasol-backstage-plugin-scorecard-backend-module-filecheck": {
+      "stages": {
+        "bootstrap": {
+          "status": "pass",
+          "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-filecheck:bs_1.52.0__2.0.1"
+        },
+        "image-metadata-fetch": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-filecheck:bs_1.52.0__2.0.1"
+        },
+        "dpdy": {
+          "status": "skip"
+        },
+        "catalog-index": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-filecheck:bs_1.52.0__2.0.1"
+        }
+      },
+      "package": "@rhdh-parasol/backstage-plugin-scorecard-backend-module-filecheck",
+      "version": "2.0.1",
+      "workspace": "scorecard",
+      "overall": "fail"
+    },
+    "rhdh-parasol-backstage-plugin-scorecard-backend-module-github": {
+      "stages": {
+        "bootstrap": {
+          "status": "pass",
+          "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-github:bs_1.52.0__5.0.1"
+        },
+        "image-metadata-fetch": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-github:bs_1.52.0__5.0.1"
+        },
+        "dpdy": {
+          "status": "skip"
+        },
+        "catalog-index": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-github:bs_1.52.0__5.0.1"
+        }
+      },
+      "package": "@rhdh-parasol/backstage-plugin-scorecard-backend-module-github",
+      "version": "5.0.1",
+      "workspace": "scorecard",
+      "overall": "fail"
+    },
+    "rhdh-parasol-backstage-plugin-scorecard-backend-module-jira": {
+      "stages": {
+        "bootstrap": {
+          "status": "pass",
+          "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-jira:bs_1.52.0__5.0.1"
+        },
+        "image-metadata-fetch": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-jira:bs_1.52.0__5.0.1"
+        },
+        "dpdy": {
+          "status": "skip"
+        },
+        "catalog-index": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-jira:bs_1.52.0__5.0.1"
+        }
+      },
+      "package": "@rhdh-parasol/backstage-plugin-scorecard-backend-module-jira",
+      "version": "5.0.1",
+      "workspace": "scorecard",
+      "overall": "fail"
+    },
+    "rhdh-parasol-backstage-plugin-scorecard-backend-module-openssf": {
+      "stages": {
+        "bootstrap": {
+          "status": "pass",
+          "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-openssf:bs_1.52.0__2.0.1"
+        },
+        "image-metadata-fetch": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-openssf:bs_1.52.0__2.0.1"
+        },
+        "dpdy": {
+          "status": "skip"
+        },
+        "catalog-index": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-openssf:bs_1.52.0__2.0.1"
+        }
+      },
+      "package": "@rhdh-parasol/backstage-plugin-scorecard-backend-module-openssf",
+      "version": "2.0.1",
+      "workspace": "scorecard",
+      "overall": "fail"
+    },
+    "rhdh-parasol-backstage-plugin-scorecard-backend-module-sonarqube": {
+      "stages": {
+        "bootstrap": {
+          "status": "pass",
+          "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-sonarqube:bs_1.52.0__2.0.1"
+        },
+        "image-metadata-fetch": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-sonarqube:bs_1.52.0__2.0.1"
+        },
+        "dpdy": {
+          "status": "skip"
+        },
+        "catalog-index": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend-module-sonarqube:bs_1.52.0__2.0.1"
+        }
+      },
+      "package": "@rhdh-parasol/backstage-plugin-scorecard-backend-module-sonarqube",
+      "version": "2.0.1",
+      "workspace": "scorecard",
+      "overall": "fail"
+    },
+    "rhdh-parasol-backstage-plugin-scorecard-backend": {
+      "stages": {
+        "bootstrap": {
+          "status": "pass",
+          "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend:bs_1.52.0__5.0.1"
+        },
+        "image-metadata-fetch": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend:bs_1.52.0__5.0.1"
+        },
+        "dpdy": {
+          "status": "skip"
+        },
+        "catalog-index": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard-backend:bs_1.52.0__5.0.1"
+        }
+      },
+      "package": "@rhdh-parasol/backstage-plugin-scorecard-backend",
+      "version": "5.0.1",
+      "workspace": "scorecard",
+      "overall": "fail"
+    },
+    "rhdh-parasol-backstage-plugin-scorecard": {
+      "stages": {
+        "bootstrap": {
+          "status": "pass",
+          "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard:bs_1.52.0__5.0.1"
+        },
+        "image-metadata-fetch": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard:bs_1.52.0__5.0.1"
+        },
+        "dpdy": {
+          "status": "skip"
+        },
+        "catalog-index": {
+          "status": "fail",
+          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard:bs_1.52.0__5.0.1"
+        }
+      },
+      "package": "@rhdh-parasol/backstage-plugin-scorecard",
+      "version": "5.0.1",
+      "workspace": "scorecard",
+      "overall": "fail"
     }
   },
   "summary": {
-    "total": 2,
+    "total": 10,
     "succeeded": 2,
-    "failed": 0
+    "failed": 8
   },
-  "status": "success"
+  "status": "partial"
 }

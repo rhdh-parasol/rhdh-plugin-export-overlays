@@ -1,0 +1,7 @@
+{
+  "rhdh-parasol-backstage-plugin-scorecard": {
+    "workspacePath": "scorecard/plugins/scorecard",
+    "support": "dev-preview",
+    "registryReference": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-scorecard:bs_1.52.0__5.0.1"
+  }
+}
