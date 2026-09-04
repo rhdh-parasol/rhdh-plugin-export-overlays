@@ -152,6 +152,16 @@ After creating/editing, add the file to `plugins/all.yaml`.
 
 Uses `kind: Package`. Key fields: `spec.packageName`, `spec.dynamicArtifact` (OCI reference), `spec.version`, `spec.backstage.role` (frontend-plugin/backend-plugin), `spec.support` (community/production/tech-preview), `spec.appConfigExamples`.
 
+## Annotation Conventions
+
+Catalog entity files use annotations from three namespaces:
+
+- **`rhdh.io/`** — RHDH-specific overlay metadata. Used in generated `workspaces/*/catalog-info.yaml` files for workspace name, source repo, source revision, and cross-references to Plugin/Package entities (`overlay-workspace`, `source-repository`, `source-revision`, `extensions-plugin-refs`, `extensions-package-refs`).
+- **`extensions.backstage.io/`** — Upstream Backstage extension annotations. Used in `catalog-entities/extensions/plugins/*.yaml` for extension UI metadata (`pre-installed`).
+- **`github.com/`** — GitHub-specific annotations. Used for the GitHub project slug (`project-slug`).
+
+New annotations for RHDH-specific overlay workspace concepts should use the `rhdh.io/` namespace. Include a brief description when introducing a new annotation key.
+
 ## E2E Testing
 
 E2E tests live in `workspaces/<name>/e2e-tests/` and use `@red-hat-developer-hub/e2e-test-utils` — a shared package that handles RHDH deployment, Playwright fixtures, helpers, and plugin configuration. For the latest and most complete documentation, see: https://github.com/redhat-developer/rhdh-e2e-test-utils/tree/main/docs
