@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'servicenow' (2 packages). Upstream source pinned at 4f14f72.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: servicenow
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: 4f14f725b8726726376b4befa130f3c6ad31d32d
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/servicenow
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-plugin-servicenow, package:rhdh/backstage-community-plugin-servicenow-backend
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +33,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

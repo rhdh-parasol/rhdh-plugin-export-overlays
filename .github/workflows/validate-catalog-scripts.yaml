@@ -20,6 +20,10 @@ on:
       - '.github/workflows/validate-catalog-scripts.yaml'
       - 'catalog-info.yaml'
       - 'workspaces/*/catalog-info.yaml'
+      - 'workspaces/*/source.json'
+      - 'workspaces/*/plugins-list.yaml'
+      - 'workspaces/*/metadata/*.yaml'
+      - 'catalog-entities/extensions/plugins/*.yaml'
   workflow_dispatch:
 
 concurrency:

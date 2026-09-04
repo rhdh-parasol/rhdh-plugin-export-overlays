@@ -9,6 +9,11 @@ metadata:
     at 71b0825.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: scaffolder-relation-processor
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: 71b082513fd1226acde492cf52ad482974b9b955
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/scaffolder-relation-processor-catalog-integration
+    rhdh.io/extensions-package-refs: package:rhdh/bcp-ctlg-backend-mod-scaffolder-relation-processor
   tags:
     - overlay
     - dynamic-plugin
@@ -29,4 +34,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

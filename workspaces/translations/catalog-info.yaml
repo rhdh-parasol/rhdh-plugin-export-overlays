@@ -8,6 +8,10 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'translations' (1 package). Upstream source pinned at a9efb05.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: translations
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: a9efb05a389e70bf107fb9c2be864fc2daaa14f7
+    rhdh.io/extensions-package-refs: package:rhdh/red-hat-developer-hub-backstage-plugin-translations
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +32,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/translations

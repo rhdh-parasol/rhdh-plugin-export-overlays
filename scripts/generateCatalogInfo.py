@@ -22,7 +22,9 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from collections import defaultdict
 from pathlib import Path
+from typing import Any
 
 import yaml
 
@@ -41,6 +43,11 @@ GENERATED_HEADER = """\
 
 DEFAULT_OVERLAY_SLUG = "rhdh-parasol/rhdh-plugin-export-overlays"
 ROOT_COMPONENT_NAME = "rhdh-plugin-export-overlays"
+ANNOTATION_OVERLAY_WORKSPACE = "rhdh.io/overlay-workspace"
+ANNOTATION_SOURCE_REPOSITORY = "rhdh.io/source-repository"
+ANNOTATION_SOURCE_REVISION = "rhdh.io/source-revision"
+ANNOTATION_PLUGIN_REFS = "rhdh.io/extensions-plugin-refs"
+ANNOTATION_PACKAGE_REFS = "rhdh.io/extensions-package-refs"
 
 # Software-catalog Component metadata.name in rhdh-plugins workspaces/*/catalog-info.yaml.
 # Only set spec.dependsOn when the source plugin already has a Component in the
@@ -102,6 +109,154 @@ def load_source_json(workspace_dir: Path) -> dict:
     source_file = workspace_dir / "source.json"
     with source_file.open(encoding="utf-8") as handle:
         return json.load(handle)
+
+
+def load_yaml(path: Path) -> dict[str, Any] | None:
+    """Load one YAML entity, returning None for malformed/non-mapping files."""
+    try:
+        with path.open(encoding="utf-8") as handle:
+            value = yaml.safe_load(handle)
+    except (OSError, yaml.YAMLError) as error:
+        log_warn(f"Skipping unreadable YAML {path}: {error}")
+        return None
+    if not isinstance(value, dict):
+        log_warn(f"Skipping non-mapping YAML {path}")
+        return None
+    return value
+
+
+def canonical_entity_ref(kind: str, namespace: str, name: str) -> str:
+    return f"{kind.lower()}:{namespace}/{name}"
+
+
+def package_name_from_plugin_entry(entry: Any) -> str | None:
+    if isinstance(entry, str) and entry:
+        return entry
+    if isinstance(entry, dict) and isinstance(entry.get("name"), str):
+        return entry["name"]
+    return None
+
+
+def normalize_part_of_ref(value: Any) -> tuple[str, str] | None:
+    """Return (namespace, name) for the common Package.spec.partOf shapes."""
+    if isinstance(value, dict):
+        value = value.get("name") or value.get("ref")
+    if not isinstance(value, str) or not value.strip():
+        return None
+    value = value.strip()
+    if value.startswith("plugin:"):
+        value = value.removeprefix("plugin:")
+    if "/" in value:
+        namespace, name = value.split("/", 1)
+        return namespace or "rhdh", name
+    return "rhdh", value
+
+
+def extension_entities(repo_root: Path) -> dict[str, list[dict[str, Any]]]:
+    """Index Extensions Catalog Plugin entities by canonical ref."""
+    entities: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    plugin_dir = repo_root / "catalog-entities" / "extensions" / "plugins"
+    if not plugin_dir.is_dir():
+        return entities
+    for path in sorted(plugin_dir.glob("*.yaml")):
+        entity = load_yaml(path)
+        if entity is None or entity.get("kind") != "Plugin":
+            continue
+        metadata = entity.get("metadata")
+        if not isinstance(metadata, dict):
+            continue
+        namespace = metadata.get("namespace", "default")
+        name = metadata.get("name")
+        if isinstance(namespace, str) and isinstance(name, str) and name:
+            entities[canonical_entity_ref("plugin", namespace, name)].append(entity)
+    return entities
+
+
+def workspace_packages(workspace_dir: Path) -> list[dict[str, Any]]:
+    """Return valid Extensions Package entities declared by one workspace."""
+    packages: list[dict[str, Any]] = []
+    metadata_dir = workspace_dir / "metadata"
+    if not metadata_dir.is_dir():
+        return packages
+    for path in sorted(metadata_dir.glob("*.yaml")):
+        entity = load_yaml(path)
+        if entity is None or entity.get("kind") != "Package":
+            continue
+        metadata = entity.get("metadata")
+        if not isinstance(metadata, dict):
+            continue
+        if isinstance(metadata.get("name"), str) and metadata["name"]:
+            packages.append(entity)
+    return packages
+
+
+def extension_refs(
+    repo_root: Path,
+    workspace_dir: Path,
+    plugin_entity_index: dict[str, list[dict[str, Any]]] | None = None,
+) -> tuple[list[str], list[str]]:
+    """Derive verified Plugin and Package refs from existing Extensions YAML."""
+    packages = workspace_packages(workspace_dir)
+    package_refs: list[str] = []
+    packages_by_plugin: dict[str, set[str]] = defaultdict(set)
+    for package in packages:
+        metadata = package["metadata"]
+        namespace = metadata.get("namespace", "default")
+        package_name = metadata["name"]
+        if not isinstance(namespace, str):
+            namespace = "default"
+        package_refs.append(canonical_entity_ref("package", namespace, package_name))
+        part_of = package.get("spec", {}).get("partOf", [])
+        if not isinstance(part_of, list):
+            part_of = [part_of]
+        for value in part_of:
+            normalized = normalize_part_of_ref(value)
+            if normalized is None:
+                log_warn(
+                    f"{workspace_dir.name}: ignoring invalid Package.spec.partOf {value!r}"
+                )
+                continue
+            plugin_ref = canonical_entity_ref("plugin", *normalized)
+            packages_by_plugin[plugin_ref].add(package_name)
+
+    # The index is shared across all workspaces during a generation. Keep the
+    # fallback for callers/tests that resolve one workspace directly.
+    plugin_entities = (
+        plugin_entity_index
+        if plugin_entity_index is not None
+        else extension_entities(repo_root)
+    )
+    plugin_refs: list[str] = []
+    for plugin_ref, package_names in sorted(packages_by_plugin.items()):
+        matches = plugin_entities.get(plugin_ref, [])
+        if not matches:
+            log_warn(
+                f"{workspace_dir.name}: Package metadata references missing {plugin_ref}"
+            )
+            continue
+        if len(matches) != 1:
+            log_warn(
+                f"{workspace_dir.name}: Package metadata references ambiguous {plugin_ref}"
+            )
+            continue
+        expected = {
+            name
+            for name in (
+                package_name_from_plugin_entry(entry)
+                for entry in matches[0].get("spec", {}).get("packages", [])
+            )
+            if name
+        }
+        unexpected = package_names - expected
+        if unexpected or not expected:
+            log_warn(
+                f"{workspace_dir.name}: omitting {plugin_ref}; Package names not present "
+                f"in Plugin.spec.packages: {', '.join(sorted(unexpected)) or 'none'}"
+            )
+            continue
+        plugin_refs.append(plugin_ref)
+
+    return sorted(set(plugin_refs)), sorted(set(package_refs))
 
 
 class _IndentDumper(yaml.SafeDumper):
@@ -166,6 +321,8 @@ def build_workspace_entity(
     source: dict,
     plugin_paths: list[str],
     overlay_slug: str,
+    plugin_refs: list[str] | None = None,
+    package_refs: list[str] | None = None,
 ) -> dict:
     plugin_count = len(plugin_paths)
     package_word = "package" if plugin_count == 1 else "packages"
@@ -184,6 +341,7 @@ def build_workspace_entity(
             ),
             "annotations": {
                 "github.com/project-slug": overlay_slug,
+                ANNOTATION_OVERLAY_WORKSPACE: workspace,
             },
             "tags": ["overlay", "dynamic-plugin"],
             "links": [
@@ -211,9 +369,27 @@ def build_workspace_entity(
             "lifecycle": "experimental",
             "owner": "rhdh-team",
             "system": "rhdh",
-            "subcomponentOf": ROOT_COMPONENT_NAME,
+            "subcomponentOf": f"component:default/{ROOT_COMPONENT_NAME}",
         },
     }
+    source_repo = source.get("repo")
+    if isinstance(source_repo, str) and source_repo:
+        entity["metadata"]["annotations"][ANNOTATION_SOURCE_REPOSITORY] = (
+            source_repo.rstrip("/")
+        )
+    source_revision = source.get("repo-ref")
+    if isinstance(source_revision, str) and source_revision:
+        entity["metadata"]["annotations"][ANNOTATION_SOURCE_REVISION] = source_revision
+
+    if plugin_refs:
+        entity["metadata"]["annotations"][ANNOTATION_PLUGIN_REFS] = ", ".join(
+            plugin_refs
+        )
+    if package_refs:
+        entity["metadata"]["annotations"][ANNOTATION_PACKAGE_REFS] = ", ".join(
+            package_refs
+        )
+
     depends_on = rhdh_plugins_depends_on(workspace)
     if depends_on and is_rhdh_plugins_source(source.get("repo", "")):
         entity["spec"]["dependsOn"] = [f"component:default/{depends_on}"]
@@ -235,6 +411,7 @@ def planned_files(
     repo_root: Path, overlay_slug: str
 ) -> list[tuple[Path, str]]:
     workspaces = discover_workspaces(repo_root)
+    plugin_entity_index = extension_entities(repo_root)
     files: list[tuple[Path, str]] = [
         (
             repo_root / "catalog-info.yaml",
@@ -244,20 +421,56 @@ def planned_files(
     for workspace_dir in workspaces:
         source = load_source_json(workspace_dir)
         plugin_paths = read_plugins_list(workspace_dir)
+        plugin_refs, package_refs = extension_refs(
+            repo_root, workspace_dir, plugin_entity_index
+        )
         entity = build_workspace_entity(
-            workspace_dir.name, source, plugin_paths, overlay_slug
+            workspace_dir.name,
+            source,
+            plugin_paths,
+            overlay_slug,
+            plugin_refs,
+            package_refs,
         )
         files.append((workspace_dir / "catalog-info.yaml", dump_entity(entity)))
     return files
 
 
-def write_files(files: list[tuple[Path, str]], dry_run: bool) -> None:
+def generated_catalog_paths(repo_root: Path) -> set[Path]:
+    return {
+        path
+        for path in (
+            repo_root / "catalog-info.yaml",
+            *(repo_root / "workspaces").glob("*/catalog-info.yaml"),
+        )
+        if path.is_file()
+    }
+
+
+def is_generated_catalog_file(path: Path) -> bool:
+    try:
+        first_lines = "\n".join(path.read_text(encoding="utf-8").splitlines()[:2])
+    except OSError:
+        return False
+    return first_lines == GENERATED_HEADER.rstrip()
+
+
+def write_files(
+    files: list[tuple[Path, str]], dry_run: bool, repo_root: Path | None = None
+) -> None:
     for path, content in files:
         if dry_run:
             log_info(f"would write {path}")
             continue
         path.write_text(content, encoding="utf-8")
         log_info(f"wrote {path}")
+    if dry_run or repo_root is None:
+        return
+    expected = {path for path, _ in files}
+    for path in generated_catalog_paths(repo_root) - expected:
+        if is_generated_catalog_file(path):
+            path.unlink()
+            log_info(f"removed obsolete generated file {path}")
 
 
 def check_files(files: list[tuple[Path, str]]) -> int:
@@ -268,6 +481,12 @@ def check_files(files: list[tuple[Path, str]]) -> int:
             continue
         if path.read_text(encoding="utf-8") != content:
             stale.append(f"stale {path}")
+    if files:
+        repo_root = files[0][0].parent
+        expected = {path for path, _ in files}
+        for path in generated_catalog_paths(repo_root) - expected:
+            if is_generated_catalog_file(path):
+                stale.append(f"unexpected generated file {path}")
     if stale:
         for item in stale:
             log_error(item)
@@ -332,7 +551,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.check:
         return check_files(files)
 
-    write_files(files, dry_run=args.dry_run)
+    write_files(files, dry_run=args.dry_run, repo_root=repo_root)
     log_info(f"{len(files)} catalog-info.yaml file(s)")
     return 0
 

@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'app-defaults' (3 packages). Upstream source pinned at 18f4229.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: app-defaults
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: 18f422959675db34fea12f67782f0939df15f08f
+    rhdh.io/extensions-package-refs: package:rhdh/red-hat-developer-hub-backstage-plugin-app-auth, package:rhdh/red-hat-developer-hub-backstage-plugin-app-defaults,
+      package:rhdh/red-hat-developer-hub-backstage-plugin-app-integrations
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +33,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/app-defaults

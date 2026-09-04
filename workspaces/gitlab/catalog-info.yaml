@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'gitlab' (2 packages). Upstream source pinned at 7c92d27.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: gitlab
+    rhdh.io/source-repository: https://github.com/immobiliare/backstage-plugin-gitlab
+    rhdh.io/source-revision: 7c92d278fc01a8d2635aa2058f82c1b9ea6a6b36
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/backstage-catalog-cards
+    rhdh.io/extensions-package-refs: package:rhdh/immobiliarelabs-backstage-plugin-gitlab, package:rhdh/immobiliarelabs-backstage-plugin-gitlab-backend
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +33,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'quickstart' (1 package). Upstream source pinned at 98cb95c.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: quickstart
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: 98cb95c73d3e6919d704f8b53fdca0598d156ec9
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/quickstart
+    rhdh.io/extensions-package-refs: package:rhdh/rhdh-bsp-quickstart
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +33,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/quickstart

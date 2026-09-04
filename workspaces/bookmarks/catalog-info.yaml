@@ -8,6 +8,10 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'bookmarks' (1 package). Upstream source pinned at fbab1e3.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: bookmarks
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: fbab1e3d10602e960199f1008e3435734c0677d4
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-plugin-bookmarks
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +32,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

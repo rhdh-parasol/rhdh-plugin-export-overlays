@@ -8,6 +8,10 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'apiconnect' (1 package). Upstream source pinned at ea026ae.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: apiconnect
+    rhdh.io/source-repository: https://github.com/ibm-apiconnect/backstage
+    rhdh.io/source-revision: ea026ae96611ab45a148b08bafaf27c4900f2c3e
+    rhdh.io/extensions-package-refs: package:apiconnect/apic-backstage
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +32,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

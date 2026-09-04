@@ -8,6 +8,13 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'orchestrator' (5 packages). Upstream source pinned at c18c88d.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: orchestrator
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: c18c88dc980407bc17add675082fcf4b874e9f6d
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/orchestrator, plugin:rhdh/orchestrator-scaffolder-actions
+    rhdh.io/extensions-package-refs: package:rhdh/redhat-backstage-plugin-orchestrator, package:rhdh/redhat-backstage-plugin-orchestrator-backend,
+      package:rhdh/redhat-backstage-plugin-orchestrator-backend-module-loki, package:rhdh/redhat-backstage-plugin-orchestrator-form-widgets,
+      package:rhdh/redhat-backstage-plugin-scaffolder-backend-module-orchestrator
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +35,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/red-hat-developer-hub-orchestrator

@@ -8,6 +8,13 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'scorecard' (8 packages). Upstream source pinned at 45fe3a5.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: scorecard
+    rhdh.io/source-repository: https://github.com/rhdh-parasol/rhdh-plugins
+    rhdh.io/source-revision: 45fe3a50479d109cdbcbde7dbf9a60b27d0cc4b4
+    rhdh.io/extensions-package-refs: package:rhdh/rhdh-backstage-plugin-scorecard, package:rhdh/rhdh-backstage-plugin-scorecard-backend,
+      package:rhdh/rhdh-backstage-plugin-scorecard-backend-module-dependabot, package:rhdh/rhdh-backstage-plugin-scorecard-backend-module-filecheck,
+      package:rhdh/rhdh-backstage-plugin-scorecard-backend-module-github, package:rhdh/rhdh-backstage-plugin-scorecard-backend-module-jira,
+      package:rhdh/rhdh-backstage-plugin-scorecard-backend-module-openssf, package:rhdh/rhdh-backstage-plugin-scorecard-backend-module-sonarqube
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +35,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/scorecard
