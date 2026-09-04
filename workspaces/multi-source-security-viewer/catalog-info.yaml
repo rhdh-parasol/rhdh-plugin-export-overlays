@@ -9,6 +9,10 @@ metadata:
     at 92e9e4e.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: multi-source-security-viewer
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: 92e9e4e09c76cc57f3475029b73e5ec84498a459
+    rhdh.io/extensions-package-refs: package:community/backstage-community-plugin-multi-source-security-viewer, package:community/backstage-community-plugin-multi-source-security-viewer-backend
   tags:
     - overlay
     - dynamic-plugin
@@ -29,4 +33,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

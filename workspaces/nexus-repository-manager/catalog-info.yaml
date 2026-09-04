@@ -9,6 +9,11 @@ metadata:
     at 4f14f72.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: nexus-repository-manager
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: 4f14f725b8726726376b4befa130f3c6ad31d32d
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/nexus-repository-manager
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-plugin-nexus-repository-manager
   tags:
     - overlay
     - dynamic-plugin
@@ -29,4 +34,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

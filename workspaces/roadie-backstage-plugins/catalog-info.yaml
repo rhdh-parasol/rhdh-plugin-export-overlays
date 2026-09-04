@@ -9,6 +9,16 @@ metadata:
     at c1b84e9.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: roadie-backstage-plugins
+    rhdh.io/source-repository: https://github.com/RoadieHQ/roadie-backstage-plugins
+    rhdh.io/source-revision: c1b84e9481a2b73001f98bf6392484641ade8910
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/aws-scaffolder-actions, plugin:rhdh/datadog, plugin:rhdh/github-insights,
+      plugin:rhdh/github-pull-requests, plugin:rhdh/http-request-scaffolder-action, plugin:rhdh/jira, plugin:rhdh/roadie-argocd,
+      plugin:rhdh/roadie-scaffolder-util-actions, plugin:rhdh/roadiehq-scaffolder-backend-argocd, plugin:rhdh/security-insights
+    rhdh.io/extensions-package-refs: package:rhdh/roadiehq-backstage-plugin-argo-cd, package:rhdh/roadiehq-backstage-plugin-argo-cd-backend,
+      package:rhdh/roadiehq-backstage-plugin-datadog, package:rhdh/roadiehq-backstage-plugin-github-insights, package:rhdh/roadiehq-backstage-plugin-github-pull-requests,
+      package:rhdh/roadiehq-backstage-plugin-jira, package:rhdh/roadiehq-backstage-plugin-security-insights, package:rhdh/roadiehq-scaffolder-backend-argocd,
+      package:rhdh/roadiehq-scaffolder-backend-module-aws, package:rhdh/roadiehq-scaffolder-backend-module-http-request, package:rhdh/roadiehq-scaffolder-backend-module-utils
   tags:
     - overlay
     - dynamic-plugin
@@ -29,4 +39,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

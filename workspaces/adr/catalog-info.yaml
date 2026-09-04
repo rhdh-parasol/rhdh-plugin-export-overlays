@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'adr' (3 packages). Upstream source pinned at 9657bbb.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: adr
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: 9657bbbac797d9c45543fdac5fb458e72a87c96f
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-plugin-adr, package:rhdh/backstage-community-plugin-adr-backend,
+      package:rhdh/backstage-community-search-backend-module-adr
   tags:
     - overlay
     - dynamic-plugin
@@ -28,4 +33,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

@@ -9,6 +9,11 @@ metadata:
     pinned at b371af5.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: scaffolder-backend-module-kubernetes
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: b371af5db1da9af8e03bec9cadde7097ad94995a
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/kubernetes-scaffolder-actions
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-plugin-scaffolder-backend-module-kubernetes
   tags:
     - overlay
     - dynamic-plugin
@@ -29,4 +34,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

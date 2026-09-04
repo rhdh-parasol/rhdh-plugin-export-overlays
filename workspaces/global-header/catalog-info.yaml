@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'global-header' (1 package). Upstream source pinned at aabb85e.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: global-header
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: aabb85ef001ddae5af621ecf17e02f7bac9175e3
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/global-header
+    rhdh.io/extensions-package-refs: package:rhdh/red-hat-developer-hub-backstage-plugin-global-header
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +33,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/red-hat-developer-hub-global-header

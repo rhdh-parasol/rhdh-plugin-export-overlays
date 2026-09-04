@@ -8,6 +8,12 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'x2a' (5 packages). Upstream source pinned at 0a5c92e.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: x2a
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: 0a5c92edd67dfcd4c968c091471b817af1ec007c
+    rhdh.io/extensions-package-refs: package:rhdh/red-hat-developer-hub-backstage-plugin-x2a, package:rhdh/red-hat-developer-hub-backstage-plugin-x2a-backend,
+      package:rhdh/red-hat-developer-hub-backstage-plugin-x2a-dcr, package:rhdh/red-hat-developer-hub-backstage-plugin-x2a-mcp-extras,
+      package:rhdh/red-hat-developer-hub-backstage-plugin-x2a-scaffolder-module
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +34,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/red-hat-developer-hub-x2a-frontend

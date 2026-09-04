@@ -9,6 +9,11 @@ metadata:
     pinned at e219369.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: scaffolder-backend-module-servicenow
+    rhdh.io/source-repository: https://github.com/backstage/community-plugins
+    rhdh.io/source-revision: e219369fcc44662df92f4ad4d940ee695a29cf9b
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/servicenow-scaffolder-actions
+    rhdh.io/extensions-package-refs: package:rhdh/backstage-community-plugin-scaffolder-backend-module-servicenow
   tags:
     - overlay
     - dynamic-plugin
@@ -29,4 +34,4 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays

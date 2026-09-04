@@ -8,6 +8,12 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'mcp-integrations' (3 packages). Upstream source pinned at a4620c6.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: mcp-integrations
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: a4620c670f89963b46904e7bf0d4270dbecde3fa
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/scaffolder-mcp-extras, plugin:rhdh/software-catalog-mcp-extras, plugin:rhdh/techdocs-mcp-extras
+    rhdh.io/extensions-package-refs: package:rhdh/red-hat-developer-hub-backstage-plugin-scaffolder-mcp-extras, package:rhdh/red-hat-developer-hub-backstage-plugin-software-catalog-mcp-extras,
+      package:rhdh/red-hat-developer-hub-backstage-plugin-techdocs-mcp-extras
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +34,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/mcp-integrations

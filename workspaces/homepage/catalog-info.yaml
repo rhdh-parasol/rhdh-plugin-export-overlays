@@ -8,6 +8,11 @@ metadata:
   description: Dynamic-plugin export overlay for workspace 'homepage' (2 packages). Upstream source pinned at af4db66.
   annotations:
     github.com/project-slug: rhdh-parasol/rhdh-plugin-export-overlays
+    rhdh.io/overlay-workspace: homepage
+    rhdh.io/source-repository: https://github.com/redhat-developer/rhdh-plugins
+    rhdh.io/source-revision: af4db664321b5e4fc7180e9c54083d226fb52c6f
+    rhdh.io/extensions-plugin-refs: plugin:rhdh/home-page
+    rhdh.io/extensions-package-refs: package:rhdh/red-hat-developer-hub-backstage-plugin-homepage, package:rhdh/red-hat-developer-hub-backstage-plugin-homepage-backend
   tags:
     - overlay
     - dynamic-plugin
@@ -28,6 +33,6 @@ spec:
   lifecycle: experimental
   owner: rhdh-team
   system: rhdh
-  subcomponentOf: rhdh-plugin-export-overlays
+  subcomponentOf: component:default/rhdh-plugin-export-overlays
   dependsOn:
     - component:default/red-hat-developer-hub-homepage
