@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "catalog-index-image": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/plugin-catalog-index:2.0-bs_1.52.0-ea7f6d3",
-    "last-successful-publish": "27395d0b659a5fdad0f0c9eab53039a5d19fad25"
+    "catalog-index-image": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/plugin-catalog-index:2.0-bs_1.52.0-fa1be4d",
+    "last-successful-publish": "fa1be4df4a2ece2e4a19845c1dd31090a6c58093"
   },
   "plugins": {
     "backstage-community-plugin-todo-backend": {
