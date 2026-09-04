@@ -231,21 +231,20 @@
           "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-adoption-insights-backend:bs_1.52.0__0.9.2"
         },
         "image-metadata-fetch": {
-          "status": "fail",
-          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-adoption-insights-backend:bs_1.52.0__0.9.2"
+          "status": "pass",
+          "digest": "sha256:c29a2d86b3f16ab780c2c9d8d8f8c2ee69bf17673b2e26fbd15d105a5a19be99"
         },
         "dpdy": {
           "status": "skip"
         },
         "catalog-index": {
-          "status": "fail",
-          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-adoption-insights-backend:bs_1.52.0__0.9.2"
+          "status": "pass"
         }
       },
       "package": "@rhdh-parasol/backstage-plugin-adoption-insights-backend",
       "version": "0.9.2",
       "workspace": "adoption-insights",
-      "overall": "fail"
+      "overall": "pass"
     },
     "rhdh-parasol-backstage-plugin-adoption-insights": {
       "stages": {
@@ -254,21 +253,20 @@
           "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-adoption-insights:bs_1.52.0__0.9.2"
         },
         "image-metadata-fetch": {
-          "status": "fail",
-          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-adoption-insights:bs_1.52.0__0.9.2"
+          "status": "pass",
+          "digest": "sha256:e53664769524bb71270cd2b4f09efc014bd42e6bb40138d8a97b563825a73256"
         },
         "dpdy": {
           "status": "skip"
         },
         "catalog-index": {
-          "status": "fail",
-          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-adoption-insights:bs_1.52.0__0.9.2"
+          "status": "pass"
         }
       },
       "package": "@rhdh-parasol/backstage-plugin-adoption-insights",
       "version": "0.9.2",
       "workspace": "adoption-insights",
-      "overall": "fail"
+      "overall": "pass"
     },
     "rhdh-parasol-backstage-plugin-analytics-module-adoption-insights": {
       "stages": {
@@ -277,27 +275,26 @@
           "oci_ref": "ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-analytics-module-adoption-insights:bs_1.52.0__0.9.2"
         },
         "image-metadata-fetch": {
-          "status": "fail",
-          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-analytics-module-adoption-insights:bs_1.52.0__0.9.2"
+          "status": "pass",
+          "digest": "sha256:222785491c0e1f4baacc09a2f2c7365b820f8518972a60009268431dc2017661"
         },
         "dpdy": {
           "status": "skip"
         },
         "catalog-index": {
-          "status": "fail",
-          "reason": "Image not found in registry: ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-analytics-module-adoption-insights:bs_1.52.0__0.9.2"
+          "status": "pass"
         }
       },
       "package": "@rhdh-parasol/backstage-plugin-analytics-module-adoption-insights",
       "version": "0.9.2",
       "workspace": "adoption-insights",
-      "overall": "fail"
+      "overall": "pass"
     }
   },
   "summary": {
     "total": 13,
-    "succeeded": 10,
-    "failed": 3
+    "succeeded": 13,
+    "failed": 0
   },
-  "status": "partial"
+  "status": "success"
 }

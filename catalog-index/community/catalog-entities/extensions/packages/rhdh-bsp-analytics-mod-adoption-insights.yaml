@@ -17,7 +17,7 @@ metadata:
 spec:
   packageName: "@rhdh-parasol/backstage-plugin-analytics-module-adoption-insights"
   # Tag: bs_1.52.0__0.9.2
-  dynamicArtifact: "oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-analytics-module-adoption-insights:bs_1.52.0__0.9.2"
+  dynamicArtifact: "oci://ghcr.io/rhdh-parasol/rhdh-plugin-export-overlays/rhdh-parasol-backstage-plugin-analytics-module-adoption-insights@sha256:222785491c0e1f4baacc09a2f2c7365b820f8518972a60009268431dc2017661"
   version: 0.9.2
   backstage:
     role: frontend-plugin-module
