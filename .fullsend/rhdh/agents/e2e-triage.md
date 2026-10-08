@@ -4,7 +4,7 @@ description: >-
   Analyze E2E nightly test failures, classify root causes per workspace,
   search for existing issues (dedup), and emit structured issue directives.
   Does NOT modify code, create branches, or fix tests.
-model: opus
+model: claude-opus-4-6
 disallowedTools: >-
   Edit, Write, MultiEdit,
   Bash(git push *), Bash(git push),
@@ -151,7 +151,7 @@ downloaded — subagents skip Step 0 and use the paths from Phase 1.
 
 **When failures span multiple workspaces**, fan out one subagent per workspace
 to run the skill's Steps 1–5. Send all Agent calls in a single response so
-they run concurrently. Always pass `model: "opus"`.
+they run concurrently. Always pass `model: "claude-opus-4-6"`.
 
 Each subagent prompt should include:
 - `ARTIFACTS` and `BUILD_LOG` paths from Phase 1
@@ -490,8 +490,8 @@ Workspaces classified: <N>
 
 ### Sub-agents
 
-- When spawning sub-agents, always pass `model: "opus"`.
-- If a sub-agent fails due to a model error, retry with `model: "opus"`
+- When spawning sub-agents, always pass `model: "claude-opus-4-6"`.
+- If a sub-agent fails due to a model error, retry with `model: "claude-opus-4-6"`
   explicitly.
 
 ### Issue body quality
