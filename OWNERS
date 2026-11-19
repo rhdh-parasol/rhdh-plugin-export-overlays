@@ -1,0 +1,12 @@
+# Prow-style OWNERS file, read by fullsend's `owners_file` authorization
+# provider (enabled in .fullsend/config.yaml). This is NOT GitHub's
+# .github/CODEOWNERS — that file only routes review requests and is never
+# used for authorization.
+#
+# `approvers` get write-equivalent access for agent slash commands
+# (/fs-diagnose, /fs-fix, custom agents). `reviewers` get triage-equivalent
+# access (/fs-triage, /fs-review). This grants no actual GitHub repository
+# permissions. Users not listed fall back to their normal GitHub roles.
+# https://github.com/fullsend-ai/fullsend/blob/main/docs/guides/user/owners-file-authorization.md
+approvers:
+    - Fortune-Ndlovu

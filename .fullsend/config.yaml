@@ -30,6 +30,14 @@ roles:
     - fix
     - retro
     - prioritize
+# Authorize agent slash commands via the Prow-style OWNERS file at the repo
+# root, in addition to normal GitHub permissions. Users listed there as
+# `approvers` get write-equivalent access for /fs-* commands (enough to run
+# the manual /fs-diagnose testing) without being repo collaborators. Users
+# not found in OWNERS fall through to the forge's permission API.
+# https://github.com/fullsend-ai/fullsend/blob/main/docs/guides/user/owners-file-authorization.md
+authorization:
+    - provider: owners_file
 allowed_remote_resources:
     - https://raw.githubusercontent.com/fullsend-ai/fullsend/
     - https://raw.githubusercontent.com/fullsend-ai/agents/
