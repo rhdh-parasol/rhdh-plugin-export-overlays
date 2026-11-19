@@ -20,6 +20,9 @@ agents:
     - name: e2e-triage
       source: rhdh/harness/e2e-triage.yaml
       model: claude-opus-4-6
+    - name: ci-diagnose
+      source: rhdh/harness/ci-diagnose.yaml
+      model: claude-opus-4-6
 roles:
     - triage
     - coder
