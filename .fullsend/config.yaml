@@ -10,19 +10,14 @@ version: "1"
 agents:
     - name: code
       source: rhdh/harness/code.yaml
-      model: claude-opus-4-6
     - name: fix
       source: rhdh/harness/fix.yaml
-      model: claude-opus-4-6
     - name: review
       source: rhdh/harness/review.yaml
-      model: claude-opus-4-6
     - name: e2e-triage
       source: rhdh/harness/e2e-triage.yaml
-      model: claude-opus-4-6
     - name: ci-diagnose
       source: rhdh/harness/ci-diagnose.yaml
-      model: claude-opus-4-6
 roles:
     - triage
     - coder
@@ -38,7 +33,3 @@ create_issues:
         repos:
             - rhdh-parasol/rhdh-plugin-export-overlays
             - fullsend-ai/fullsend
-mint_url: https://mint.fullsend.sh
-inference:
-    project: rhdh-sidekick-167988
-    wif_provider: projects/189673402608/locations/global/workloadIdentityPools/fullsend-inference/providers/gh-rhdh-parasol-rhdh-plugin-expo
