@@ -28,8 +28,6 @@ roles:
 allowed_remote_resources:
     - https://raw.githubusercontent.com/fullsend-ai/fullsend/
     - https://raw.githubusercontent.com/fullsend-ai/agents/
-create_issues:
-    allow_targets:
-        repos:
-            - rhdh-parasol/rhdh-plugin-export-overlays
-            - fullsend-ai/fullsend
+models:
+    aliases:
+        opus: claude-opus-4-6
