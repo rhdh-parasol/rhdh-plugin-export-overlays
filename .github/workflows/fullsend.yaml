@@ -2,7 +2,7 @@
 # Only label-based triggers and /fs-* slash commands remain active.
 # `fullsend repos install` regenerates this file and restores the
 # auto-trigger events — re-apply after every upgrade.
-# Upstream: https://github.com/fullsend-ai/fullsend/blob/main/internal/scaffold/fullsend-repo/.github/workflows/fullsend.yaml
+# Upstream: https://github.com/fullsend-ai/fullsend/blob/main/internal/scaffold/fullsend-repo/templates/shim-per-repo.yaml
 ---
 # fullsend shim workflow (per-repo installation mode)
 # Routes events to agent workflows via reusable-dispatch.yml.
