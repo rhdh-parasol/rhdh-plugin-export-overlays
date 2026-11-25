@@ -7,7 +7,7 @@ description: >-
   the root cause (PR regression vs flake vs pre-existing vs product bug vs
   env), and renders a fresh diagnosis comment. Does NOT modify code,
   create branches, or fix anything.
-model: claude-opus-5-5
+model: opus
 ---
 
 # PR CI Diagnose Agent

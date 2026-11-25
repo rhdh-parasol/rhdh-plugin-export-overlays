@@ -4,7 +4,6 @@
 # was actually built and tested against.
 base: https://raw.githubusercontent.com/fullsend-ai/agents/ea29de9bb8b1729b04c0597b48a5c7aae62deb71/harness/code.yaml#sha256=cfa49d4677cc4d6544fcf878e05b0f95620bbb62907289dbc5a22681a7679976
 agent: rhdh/agents/code.md
-model: claude-opus-5-5
 image: ghcr.io/redhat-developer/rhdh-fullsend-code:0.57.1
 policy: rhdh/policies/code.yaml
 host_files:

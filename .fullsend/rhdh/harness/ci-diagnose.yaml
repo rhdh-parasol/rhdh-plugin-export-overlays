@@ -21,7 +21,7 @@
 # only on issue/PR/comment/label events (see ADR 0033 + ghaevent.go) — or
 # (b) a maintainer commenting `/fs-diagnose` directly on the PR.
 agent: rhdh/agents/ci-diagnose.md
-model: claude-opus-5-5
+model: opus
 image: ghcr.io/redhat-developer/rhdh-fullsend-code:0.57.1
 policy: rhdh/policies/ci-diagnose.yaml
 
