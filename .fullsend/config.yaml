@@ -32,6 +32,6 @@ allowed_remote_resources:
     - https://raw.githubusercontent.com/fullsend-ai/agents/
 models:
     aliases:
+        haiku: claude-haiku-4-5
         opus: claude-opus-5-5
         sonnet: claude-sonnet-5-5
-        haiku: claude-haiku-4-5
